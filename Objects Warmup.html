@@ -1,0 +1,81 @@
+<p>This lesson will not have any code samples because it is intended to help you build an intuition for thinking about objects and their creation, rather than instructing you on syntax or code patterns. If you can develop a strong intuition about the purpose behind objects, then the structure and use of objects won't seem so arcane.</p>
+
+<p>Objects are the basic building block of JavaScript. Even functions inherit from JavaScript's overlord Object object (which is the reason you can so handily pass functions around like objects and why functions have prototype methods, like <code>bind</code>, <code>call</code>, and <code>apply</code>). Objects are incredibly flexible. But sometimes with extra flexibility comes a bit of extra complexity. </p>
+
+<p>It's kind of like Yoga: as practitioners' flexibility increases so too does their deepness, until finally you're talking to a Yoga instructor one day when suddenly you find yourself ascending to a higher plane of being from the sheer depth of the conversation. (Here's an absurdist joke for you, Morgan.)</p>
+
+<p>Mastering the use of objects will take some time, but you're already well on your way and it will be well worth the effort.</p>
+
+<p>We need objects in JavaScript because they enable us to do something called "modeling." The idea behind modeling is that we can represent things and ideas as a list of named properties without any imposed rules for ordering or organization.</p>
+
+<p>To illustrate this idea, let's read through a developer's description of himself. The developer will tell us details about his life. People are complicated things, with thoughts and actions and lives filled with depth (like a Yoga instructor or a JavaScript Object). When reading the following paragraph, look for details about the author that we can model into a set of properties.</p>
+
+<blockquote>
+  "Hi, my name is Bennie Marenghi. I live in upstate Rhode Island with my partner Bernice, our daughter Moneta, and our son Garth. For the last five years, I've been working as a contractor. I like working on development teams for a while and then moving on to new projects. Digging into something new every few months is exciting. I think that I've worked with 8 teams in the last five years. Pretty cool stuff. When I'm not programming, I'm happiest when out camping with the family."
+</blockquote>
+
+<p>Bennie has given us lots of information about his life that we can use to build a model of him as an object. Let's break down this paragraph and look for details that we can represent as properties. Typically, I focus on information that I can translate directly to a `key` and `value`.</p>
+
+<p>To demonstrate this, I'll highlight the words in the paragraph <em>that stand out as property values</em>.</p>
+
+<blockquote>
+  "Hi, my name is <strong>Bennie Holtz</strong>. I live in upstate <strong>Rhode Island</strong> with my partner <strong>Bernice</strong>, our daughter <strong>Moneta</strong>, and our son <strong>Garth</strong>. For the last <strong>five years</strong>, I've been working as a <strong>contractor</strong>. I like working on development teams for a while and then moving on to new projects. Digging into something new every few months is exciting. I think that I've worked with <strong>8</strong> teams in the last <strong>five years</strong>. Pretty cools stuff. When I'm not programming, I'm happiest when out <strong>camping with the family.</strong>"
+</blockquote>
+
+<p>Now, we'll pull all of those details out of the paragraph and rewrite them as a simple list. In effect, we are removing all of the "fluff" from Bennie's explanation and listing out only the exact details that he has provided. Remember, these details are the <em>values</em> of our properties.</p>
+
+<ul>
+<li>Bennie Holtz</li>
+<li>Rhode Island</li>
+<li>Bernice</li>
+<li>Moneta</li>
+<li>Garth</li>
+<li>five years</li>
+<li>contractor</li>
+<li>8</li>
+<li>camping with the family</li>
+</ul>
+
+<p>Now, let's amend our list of values and make them properties. To do so, we'll have to associate each value with a key.</p>
+
+<ul>
+  <li>name: Bennie Holtz</li>
+  <li>residence: Rhode Island</li>
+  <li>partner: Bernice</li>
+  <li>daughter: Moneta</li>
+  <li>son: Garth</li>
+  <li>experience: five years</li>
+  <li>occupation: contractor</li>
+  <li>teams: 8</li>
+  <li>hobby: camping with the family</li>
+</ul>
+
+<p>For some of our properties, Bennie has provided reasonable key names. For instance, the first sentence is: "Hi, my name is Bennie Holtz." In that sentence, he provided "name" and "Bennie Holtz." "name" is already the perfect key for the value "Bennie Holtz."</p>
+
+<p>For other details, Bennie gives us the value, but not the key. In those cases, we must choose a sensible key that aligns with the value. For instance, in the last sentence, he tells us that when he isn't working, he's camping with his family &8213; which as we all know means he is actually still sort of working: it's just that this way, he can do it with some mosquito repellant and a farmer's tan identifiable at a hundred yards. That's great, but we have to give that some kind of label. I chose "hobby," but I could have chosen "pastime" or "vacation." All three options are sensible, but I thought "hobby" seemed most appropriate.</p>
+
+<h2>More Examples</h2>
+
+<p>Anything can be modeled as properties, so you should practice doing so. In this section, you'll read through a couple of paragraphs. Your job is to model the subject of the paragraph as a list of properties.</p>
+
+<p>In hover text for each of the following descriptions, you will find completed models for the contents of each description. If your modeling differs somewhat from the examples provided, don't be alarmed. You might use a different word for your key, or pick out different details to include in your list of properties. The point of this little exercise is to give you some experience <em>thinking about modeling</em>.</p>
+
+<blockquote>
+  <strong>NOTE: Try to complete your modeling before you look at the examples in the hover text. It's important that you make an attempt.</strong>
+</blockquote>
+
+<h3>
+  Description 1 - Model the Pitcher
+</h3>
+
+<blockquote title="color: blue, handle: long, spout: small, height: 14, volume: 30oz, material: glass, weight: heavy, usability: heavy and somewhat hard to pour">
+  "The pitcher is blue and has a long handle and a small spout for pouring. It is 14" tall and holds about 30oz of liquid. The glass is translucent so that you can see the contents. The glass is thick, making the pitcher heavy and somewhat hard to pour."
+</blockquote>
+
+<h3>
+  Description 2 - Model the Dog
+</h3>
+
+<blockquote title="Sadie, gender: female, coat: black, breed :Black Labrador, disposition: friendly and good with kids, trained :Doggy Daze, trainer: Donald Johnson, weight: 60lb">
+  "Sadie is the best dog ever! She has the most beautiful black coat I've every seen on a Labrador. She is super friendly and great with kids. I had her professionally trained at Doggy Daze in Columbia, just around the corner from my house. Donald Johnson was her trainer, and he was the best. Sadie is a big dog, nearly 60lb, so she was a real handful until Donald trained her. Now, she's just the best dog ever!"
+</blockquote>

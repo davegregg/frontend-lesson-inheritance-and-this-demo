@@ -1,0 +1,52 @@
+<p>We're going to make a really generic LivingThing class. We could use it to make all sorts of subclasses. We'll use it, in this case, to create the Hero and Monster subclasses. Then we'll have our Hero fight a group of Monsters.</p>
+
+<p>I have already written out the code to play out the battle. I want you to write code which makes it work (this is similar to how developers will often write their code to comply with already-written tests). Feel free to change the content of the strings in the provided code, as well as the health numbers and the number of monsters your Hero will battle.</p>
+
+<ol>
+
+  <li>Copy the following code into a JavaScript file and write your code above it. This code should work by the time you are done: <blockquote>
+      const ratSupremacist = new Monster("Intelligent Rat (Racist)", "lab-experiment gone awry", 5);
+      const lawsuitWaitingToHappen = new Monster("Sentient Boiling Hot Spilled Coffee", "construct", 5);
+      const gheklekTheWereRainbow = new Monster("Semi-Iridescent Goblin", "fantastical creature", 30);
+      const jennifer = new Monster("Misunderstood Ogre (Former Cast Member of 'One Tree Hill') Acting in Self-Defense and Sheer Bewilderment", "fantastical creature", 80);
+      const monsters = [ratSupremacist, lawsuitWaitingToHappen, gheklekTheWereRainbow, jennifer];
+      const superhero1 = new Hero("Superman", "Clark Kent", 110);
+      
+      console.log("A hero emerges!");
+      console.log("The noble " + superhero1.name + " has vowed to defeat the monsters and save the realm");
+      console.log("Will they be victorious?");
+      
+      superhero1.fight(monsters);
+      
+      if (superhero1.isAlive) {
+        console.log("The hero, " + superhero1.name + ", prevailed!");
+      } 
+      else {
+        console.log(superhero1.name + " was bested by the monsters and when unmasked was discovered to be " + superhero1.secretIdentity + "!");
+      }</blockquote></li>
+
+  <li>
+    Write a LivingThing class. The constructor should take a name argument and a health argument. The constructor should create an isAlive property and set it to true.
+  </li>
+
+  <li>
+    Write a Monster class which inherits from LivingThing, in addition to LivingThing's usual arguments, a Monster should also have a "classification".
+  </li>
+  
+  <li>
+    Write a Hero class which inherits from LivingThing. In addition to LivingThing's usual arguments, a Hero should also have a "secretIdentity".
+  </li>
+  
+  <li>
+    Write an "attack" prototype method on Hero. This method will take an instance of Monster <em>as an argument</em> &5213; this will be the target of the attack. Deal a random amount of damage to both the Hero and the targetted Monster &5213; changing their health values appropriately.
+  </li>
+  
+  <li>
+    As each attack occurs, display the changing health stats for the Hero and the Monster being attacked, using something like the following sentence: "Superman's health (110) reduced by 8. OfficePrinter's health (12) reduced by 7."
+  </li>
+  
+  <li>
+    Write a "fight" prototype method on Hero. This method will take an array of Monster instances as an argument. Loop through each Monster to have the Hero attack each one: while both the Hero and the current Monster are alive, continue to attack the Monster.
+  </li>
+
+</ol>

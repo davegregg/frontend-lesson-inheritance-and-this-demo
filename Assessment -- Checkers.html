@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+<h1>
+  Create a Checkers Game
+</h1>
+
+<h2>Getting Started</h2>
+<ol>
+  <li><p>
+    Start this project by copying your Grid and Cell class project to a new folder.
+  </p></li>
+  <li>
+      <p>
+        Familiarize yourself with the rules of Checkers. For the purposes of this exercise, we will only follow the rules mentioned in the Howcast instructional video.
+      </p>
+  </li>
+  <li><p>Read this whole page before you start. It is a good idea, once you get the birds' eye view and understand the requirements, to chart out the structure of what you will be building before you start writing a single line of code.</p></li>
+  <li><p>This is a two-player game. Don't build a "computer player" unless you have time after you complete the requirements.</p></li>
+</ol>
+
+<h2>Minimum-Viable Product (MVP)</h2>
+<ul>
+  
+  <li><p>By the end of the project, you should have a playable two-player checkers game.</p></li>
+  <li>
+    <p>Each class should reside in its own file in your project.</p>
+  </li>
+  <li>
+    <p>Create a Game class. All it really needs to do is start a new game: create a new checkers grid, create two new players, distribute any configuration options down to the new class instances, and so on. This way, to start a new game, all you need to to do is run <code>new Game(config, or, various, arguments)</code>.</p>
+  </li>
+  <li><p>
+    You will want to create a Player class to simulate the behavior of players at a checkers table. So the player class instances will be what will trigger the movement of the checkers, the crowning of kings, and so forth. Anything a human would be doing. In that sense, <strong>the Player class will either perform or trigger all of your core <em>game</em> logic.</strong>
+  </p></li>
+  <li><p>
+    You will want to create a simple Checker class. You don't need a separate subclass for dark checkers and light checkers, since there will be no behavioral difference between the two. So just make sure your Checker class takes a "type" or "color" argument, or something along those lines.
+  </p></li>
+  <li>
+    <p>
+      You will re-purpose the Grid and Cell classes you have already created. You will create "subclasses" which inherit directly or indirectly from these "base" classes:
+    </p>
+    <ul>
+      <li><p>
+        Write a <strong>CheckersGrid</strong> class to inherit from Grid. Checkers-specific additions or overrides to your generic Grid class will go here.
+      </p></li>
+      <li><p>
+        Write one class which directly inherits from Cell &ndash; this class will stand for the basic concept of a checkers square. Let's say you call it "BasicSquare." BasicSquare is where you make any general checkers-specific additions or overrides to your Cell class. All light squares can be just BasicSquares. Light squares: ya basic.
+      <li><p>
+        Then write a class for dark squares <em>which inherits from BasicSquare.</em> Dark squares alone can receive checkers, so they need distinct behavior from BasicSquare (more on that in the next bullet-point). You will also override the default styling which BasicSquare cells get: this will give you the visual distinction between a light square and a dark square.
+      </p></li>
+      <li>
+        <p>To emulate the behavior of dark squares being able to "receive" checkers, your dark square class should have the prototype method <code>addChecker()</code>. This will be a very simple method which basically just does something like: <code>this.element.appendChild(checker.element)</code>.</p>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+
+<h2>Pro Tips and Guidance</h2>
+<ul>
+  <li>
+    <p>It will be easier and give you a quicker payoff if you build the grid first (per the requirements above, of course) before building other classes. You don't have to finish out all the behavior for your Grid and Cell subclasses at this point. Just get the checker board up on the page, then decide what makes most sense to do next.</p>
+  </li>
+  <li>
+    <p>You don't have to create a win condition. The real-life players can figure it out for themselves, in this case.</p>
+  </li>
+  <li>
+    <p>To "crown" a checker, I would recommend simply having a boolean property or a method on your Checker class, rather than any more literal implementation of stacking checker pieces.</p>
+  </li>
+  <li>
+    <p>
+      Remember how property name lookups occur: when you make a method call on an object, the first place the JavaScript engine will look for that method name on the <em>instance object</em>. If it isn't found there, then it will check the prototype object attached to the instance (and then on up the chain of prototypes until it is found or there is nowhere else to look). This means that you can override methods higher in the prototype chain by adding a method lower on the chain with the exact same property name.
+    </p>
+    <p>
+      This may come in handy if you find, for example, that your createCells() method on your generic Grid class doesn't work the way you want your CheckersGrid to work. Just create a new createCells() method on your CheckersGrid class to override the default behavior. No need to change your Grid base class itself.
+    </p>
+  </li>
+</ul>
+
+
+</body>
+</html>

@@ -15,3 +15,18 @@ main {
   height: 50vh;
   width: 50vw;
 }
+
+[data-fruit-item="plum"] {
+  color: rebeccapurple;
+  text-decoration: none;
+}
+
+[data-fruit-item="apple"] {
+  color: firebrick;
+  text-decoration: none;
+}
+
+[data-fruit-item="watermelon"] {
+  color: green;
+  text-decoration: none;
+}

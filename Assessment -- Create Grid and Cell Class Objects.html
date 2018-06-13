@@ -1,0 +1,23 @@
+<p>You are by now pretty familiar with creating grids. You've created several grids since Tic Tac Toe. It's time to use Object-Oriented Design to make your life easier for when you go to make another grid. Use what you've learned about building class objects using constructors and prototypes to fulfill the following requirements:</p>
+
+<ol>
+
+  <li>Create a Grid constructor function, which accepts arguments you would expect you would need to create any generic grid. If this argument list grows too long, make it a single "config" object with named properties representing each of the configuration options your class expects you to supply.</li>
+
+  <li>Create a Cell constructor function, which similarly accepts any argument you would need to create any generic grid cell cell.</li>
+
+  <li>In your constructors for both classes, create the basic HTML element(s) a grid or cell would need and create a property on your instance of Grid or Cell which points to that element. Alternatively, put the HTML element creation behavior in a method your constructor will call set things up. (3 points)</li>
+
+  <li>Your grid should instantiate new instances of Cell automatically, as a part of the construction of the grid object, and store each instance of Cell in an array on your instance of Grid. (2 points)</li>
+
+  <li>Only store row and column index values on the dataset for any of the HTML elements you use for your Grid or Cell. For all other values you want to store, make them properties on each instance of Grid or Cell. (3 points)</li>
+
+  <li>This will also mean that you will want to create a prototype method on Grid which will accept the row and column indexes and use them to search <em>and return</em> the grid's array of cells for a given instance of Cell. Any <em>other</em> methods on Grid which needs Cell information should accept a Cell instance as an argument, instead of indexes or elements. (4 points)</li>
+  
+  <li>Your Grid should have methods that deal with the collection of cells in the grid as a whole, whereas methods that deal only with a <em>particular</em> cell should be written on the Cell prototype. Think of methods that would be handy to have and of things you've done repetitively for most grids. Writing these methods on these classes can make future projects easier, more comprehensible, and more concise, for example: <code>Cell.prototype.swapStyle("old-class", "new-class")</code>, <code>Cell.prototype.setAsClicked()</code>, or <code>Cell.prototype.setDefaultStyles()</code>. (1 point)</li>
+
+  <li>Create a Grid prototype method which accepts a Cell as an argument and returns an array of existing neighboring cells. (4 points)</li>
+
+  <li>Keep your constructors and all your methods fewer than 30 lines of code, and preferably fewer than 20. As any function grows in length, look for logical opportunities to outsource some of that behavior to a utility method of your own creation. (3 points)</li>
+
+</ol>

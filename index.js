@@ -1,4 +1,4 @@
-function Animal (genus, species, name, parentElement, isAlive = true) {
+function Animal({ genus, species, name, isAlive = true }) {
 
   // THE "NEW" KEYWORD AND "THIS"
   //
@@ -8,15 +8,15 @@ function Animal (genus, species, name, parentElement, isAlive = true) {
   // Then "new" will return that "this" object, without me having to write "return this".
   // So I am using this function to construct and return a new object, which is why it is
   // called a "constructor".
-  
+
   this.genus = genus.toLowerCase()
   this.species = species.toLowerCase()
   this.name = name
   this.isAlive = isAlive
   this.isHungry = true
-  
-  this.addElement(parentElement) 
-  
+
+  this.addElement(options.parentElement)
+
   // "BIND" AND "THIS"
   //
   // Here we're binding the click handler function to our current context -- our current
@@ -38,7 +38,7 @@ function Animal (genus, species, name, parentElement, isAlive = true) {
 
 }
 
-Animal.prototype = { 
+Animal.prototype = {
 
   // USING "THIS" IN THE PROTOTYPE OBJECT
   //
@@ -50,20 +50,22 @@ Animal.prototype = {
   // of those functions will be the instance of Animal by default.
 
   addElement: function (parentElement) {
+
     this.element = document.createElement("div")
     this.element.classList.add("animal", this.genus, this.species)
     this.element.id = name
     this.parentElement = parentElement
     this.parentElement.appendChild(this.element)
+
   },
-  
+
   eat: function (food) {
     if (this.isHungry && food) {
       this.isHungry = false
     }
     console.log(this.name + " is eating " + food + "!")
   },
-  
+
   sleep: function (hours) {
     console.log(this.name + " is sleeping!")
   },
@@ -117,7 +119,7 @@ Animal.prototype = {
 }
 
 
-function Mammal (genus, species, name, parentElement, isAlive = true) {
+function Mammal(genus, species, name, parentElement, isAlive = true) {
 
   // As we did in our Animal constructor, when we call "new Mammal()", a brand new, empty
   // object is created and that's what "this" will point to. That new object "this" is
@@ -125,7 +127,7 @@ function Mammal (genus, species, name, parentElement, isAlive = true) {
   // 
   // So anytime we do something like "this.potato = 'yes, please'", we are defining a new
   // property on our new object.
-  
+
   // And since .call() allows us to redefine a function's internal "this" (like .bind()
   // does) and immediately executes it, we can use it to run any arbitrary function's
   // code AS THOUGH that code had really been written in any CONTEXT of our choosing.
@@ -154,13 +156,22 @@ Mammal.prototype.constructor = Mammal
 
 // Finally, we can "instantiate" unique instances of our Animal and Mammal classes:
 
-const bernice = new Animal("reptile", "lizard", "Bernice", document.querySelector("main"))
+const bernice = new Animal({
+  species: "lizard",
+  genus: "reptile",
+  name: "Bernice",
+  parentElement: document.querySelector("main")
+})
+
+
+
 const bennie = new Mammal("canine", "wolf", "Bennie", document.querySelector("main"))
 
 // Here, I am defining methods directly on "bennie". Since I'm not defining these on 
 // bennie's prototype, these methods will be unique to bennie.
 
 bennie.juggle = function () {
+  
   console.log(this)
   console.log(this.name + " is juggling (mysteriously)!")
 }
@@ -177,5 +188,15 @@ bennie.resurrect = function (how) {
 // Here, I am calling the juggle function, but it will execute in the CONTEXT of "bernice"
 // instead of "bennie".
 
-bennie.juggle.call(bernice) 
+bennie.juggle.call(bernice)
 
+
+
+const watermelonElement = document.querySelector("[data-fruit-item='watermelon']")
+
+watermelonElement.dataset.fruitItem = "watermelon OF DEATH"
+watermelonElement.dataset.isClicked
+
+watermelonElement.dataset.potato = "yes please, with mustard"
+watermelonElement.dataset.toast = "why are you even doing this?"
+watermelonElement.dataset.pringles = "uh, this is supposed to be about fruit"
